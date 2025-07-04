@@ -1,21 +1,18 @@
 from langchain_core.tools import tool
 import requests
-from typing import Annotated, Literal
+from typing import Annotated
 from langgraph.types import Command
 from langchain_core.tools import InjectedToolCallId
 from dotenv import load_dotenv
 from io import BytesIO
 from src.util.enum import Graph_Node
-from langchain_core.messages import HumanMessage,ToolMessage
-from langchain_core.runnables import RunnableConfig
-from src.config.config import cloundinary_config
+from langchain_core.messages import ToolMessage
 import os
-from src.util.resize_image import resize_if_needed
 
 load_dotenv()
-API_KEY = "sk-qhJ9B9UIHzzuZRGPbHESgPBrVBjErxXVlwPOZiiMHGqJ1oAr"
+STABILITY_API_KEY = os.getenv("STABILITY_API_KEY")
 
-STATIC_FOLDER = "./static"  # Save images here
+STATIC_FOLDER = "./static"  
 BASE_URL = "http://localhost:8000/static"  # Update if hosted elsewhere
 
 
@@ -23,7 +20,6 @@ BASE_URL = "http://localhost:8000/static"  # Update if hosted elsewhere
 @tool(parse_docstring=True)
 def upscale_image(
     tool_call_id: Annotated[str, InjectedToolCallId],
-    # config: RunnableConfig,
     input_image_url: Annotated[str, "The image url which will be used to upscale the image"],
 
 ):
@@ -34,21 +30,14 @@ def upscale_image(
         input_image_url (str): The url of the image to be upscaled.
     """
     try:
-        
-        print(input_image_url)
-
-
         image = requests.get(input_image_url)
-        print("____ image Processiong_____")
         if image.status_code != 200:
             return {"error": "Failed to download image from URL"}
-        
-        
-
+      
         response = requests.post(
         f"https://api.stability.ai/v2beta/stable-image/upscale/fast",
         headers={
-            "authorization": f"Bearer {API_KEY}",
+            "authorization": f"Bearer {STABILITY_API_KEY}",
             "accept": "image/*"
         },
         files={

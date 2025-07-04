@@ -14,17 +14,16 @@ import cloudinary
 import cloudinary.uploader  
     
 load_dotenv()
-API_KEY = "sk-qhJ9B9UIHzzuZRGPbHESgPBrVBjErxXVlwPOZiiMHGqJ1oAr"
+STABILITY_API_KEY = os.getenv("STABILITY_API_KEY")
 
-STATIC_FOLDER = "./static"  # Save images here
-BASE_URL = "http://localhost:8000/static"  # Update if hosted elsewhere
+STATIC_FOLDER = "./static" 
+BASE_URL = "http://localhost:8000/static"  
 
 
 
 @tool(parse_docstring=True)
 def background_remove(
     tool_call_id: Annotated[str, InjectedToolCallId],
-    # config: RunnableConfig,
     input_image_url: Annotated[str, "The image url which will be used to upscale the image"],
 
 ):
@@ -35,32 +34,26 @@ def background_remove(
         input_image_url (str): The url of the image to be upscaled.
     """
     try:
-        
-        print(input_image_url)
-
-
         image = requests.get(input_image_url)
-        print("____ image Processiong_____")
         if image.status_code != 200:
             return {"error": "Failed to download image from URL"}
         
        
 
         response = requests.post(
-    f"https://api.stability.ai/v2beta/stable-image/edit/remove-background",
-    headers={
-        "authorization": f"Bearer {API_KEY}",
-        "accept": "image/*"
-    },
-    files={
-        "image": ("input.png", BytesIO(image.content), "image/png")
-    },
-    data={
-        "output_format": "png"
-    },
-)
+            f"https://api.stability.ai/v2beta/stable-image/edit/remove-background",
+            headers={
+                "authorization": f"Bearer {STABILITY_API_KEY}",
+                "accept": "image/*"
+            },
+            files={
+                "image": ("input.png", BytesIO(image.content), "image/png")
+            },
+            data={
+                "output_format": "png"
+            },
+        )
 
-        print("____ image Processiong_____")
         
         if response.status_code== 200:
              
@@ -68,7 +61,7 @@ def background_remove(
                 BytesIO(response.content),
                 resource_type="image",
                 public_id=f"generated_image_{tool_call_id}",
-                folder="vertexai_generated",  # Optional folder
+                folder="vertexai_generated",  
                 overwrite=True
             )
             

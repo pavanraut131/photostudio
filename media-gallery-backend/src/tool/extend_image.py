@@ -12,9 +12,10 @@ import os
 
 
 load_dotenv()
-API_KEY = "sk-qhJ9B9UIHzzuZRGPbHESgPBrVBjErxXVlwPOZiiMHGqJ1oAr"
+STABILITY_API_KEY = os.getenv("STABILITY_API_KEY")
 
-STATIC_FOLDER = "./static"  # Save images here
+
+STATIC_FOLDER = "./static"  
 BASE_URL = "http://localhost:8000/static"
 
 
@@ -23,8 +24,6 @@ def extend_image(
     output_format:Literal["png", "jpeg", "webp"],
     tool_call_id: Annotated[str, InjectedToolCallId],
     input_image_url: Annotated[str, "The image url which will be used to extend the image"],
-    # config: RunnableConfig,
-    
 
 ):
     """
@@ -36,11 +35,6 @@ def extend_image(
  
     """
     try:
-        # configurations = config.get("configurable", {})
-        # image_url = configurations.get("image_url", "")
-        print(input_image_url)
-
-
         image = requests.get(input_image_url)
         if image.status_code != 200:
             return {"error": "Failed to download image from URL"}
@@ -48,7 +42,7 @@ def extend_image(
         response = requests.post(
         f"https://api.stability.ai/v2beta/stable-image/edit/outpaint",
         headers={
-            "authorization": f"Bearer {API_KEY}",
+            "authorization": f"Bearer {STABILITY_API_KEY}",
             "accept": "image/*"
         },
         files={
@@ -83,12 +77,10 @@ def extend_image(
                     
                 
                 },
-                # goto=Graph_Node.MANAGER.value
             )
         else:
             print("else")
             return Command(
-                # graph=Command.PARENT,
                 update={
                     "messages": [
                         ToolMessage(
@@ -97,7 +89,6 @@ def extend_image(
                     ],
                     
                 },
-                # goto=Graph_Node.MANAGER.value,
             )
     
     except requests.exceptions.RequestException as e:

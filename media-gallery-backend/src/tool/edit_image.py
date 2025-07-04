@@ -16,8 +16,7 @@ from src.util.upload_to_cloudinary import upload_to_cloudinary
 
 
 load_dotenv()
-# API_KEY = "sk-v7NImK4lSd7CjxkLRbubdHKfrYJvM7YWTWivH1b2sg2d2m6D"
-API_KEY = "sk-qhJ9B9UIHzzuZRGPbHESgPBrVBjErxXVlwPOZiiMHGqJ1oAr"
+STABILITY_API_KEY = os.getenv("STABILITY_API_KEY")
 STATIC_FOLDER = "./static"  
 BASE_URL = "http://localhost:8000/static"
 
@@ -41,11 +40,6 @@ def edit_image(
 
     """
     try:
-       
-        print(input_image_url)
-        print(brushmark_url)
-        print(edit_prompt)
-
         original_image = requests.get(input_image_url)
         if original_image.status_code != 200:
             return {"error": "Failed to download image from URL"}
@@ -57,7 +51,7 @@ def edit_image(
         response = requests.post(
         f"https://api.stability.ai/v2beta/stable-image/edit/inpaint",
         headers={
-        "authorization": f"Bearer {API_KEY}",
+        "authorization": f"Bearer {STABILITY_API_KEY}",
         "accept": "image/*"
         },
         files={
@@ -85,7 +79,6 @@ def edit_image(
 
 
             return Command(
-                
                 update={
                     "messages": [
                         ToolMessage(
@@ -93,8 +86,6 @@ def edit_image(
                         )
                     ],
                     "result_url": image_url,
-                    
-                
                 },
             )
         else:

@@ -7,17 +7,15 @@ from dotenv import load_dotenv
 from io import BytesIO
 from src.util.enum import Graph_Node
 from langchain_core.messages import ToolMessage
-from langchain_core.runnables import RunnableConfig
 import os 
-from src.util.resize_image import decode_base64_image
+
 
 
 load_dotenv()
-# API_KEY = "sk-qhJ9B9UIHzzuZRGPbHESgPBrVBjErxXVlwPOZiiMHGqJ1oAr"
-# API_KEY = "sk-eKHWDmleUKh7qdlc2NTEroQRrA9cXcyXqYr8pfnw2MYIFyul"
+
 STABILITY_API_KEY = os.getenv("STABILITY_API_KEY")
 
-STATIC_FOLDER = "./static"  # Save images here
+STATIC_FOLDER = "./static"  
 BASE_URL = "http://localhost:8000/static"
 
 @tool(parse_docstring=True)
@@ -36,13 +34,6 @@ def erase_image(
     """
     
     try:
-        
-        # config_data = config.get("configurable", {})
-        # input_image_url = config_data.get("image_url")
-        # brushmark_url = config_data.get("brushmark_url")
-
-        print("Image URL:", input_image_url)
-        print("Brushmark URL (base64):", brushmark_url)
         original_image = requests.get(input_image_url)
         if original_image.status_code != 200:
             return {"error": "Failed to download image from URL"}
@@ -51,9 +42,6 @@ def erase_image(
         if mask_image.status_code != 200:
             return {"error": "Failed to download image from URL"}
 
-
-       
-        print("started erasing ")
         response = requests.post(
         f"https://api.stability.ai/v2beta/stable-image/edit/erase",
         headers={
@@ -68,7 +56,6 @@ def erase_image(
             "output_format": "webp",
         },
     )
-        print("got the resposnse=============", response)
         if response.status_code==200:
             filename = f"erased_image_{tool_call_id}.{"png"}"
             filepath = os.path.join(STATIC_FOLDER, filename)
@@ -78,8 +65,7 @@ def erase_image(
                 f.write(response.content)
 
             image_url = f"{BASE_URL}/{filename}"
-            print(image_url, "==============imageurl================")
-
+        
             return Command(
                 update={
                     "messages": [

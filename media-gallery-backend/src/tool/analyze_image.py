@@ -31,14 +31,7 @@ def analyze_image(
  
     """
     try:
-        # configurations = config.get("configurable", {})
-        # image_url = configurations.get("image_url", "")
-        print(f" this is the iameg url ==========={input_image_url}")
-
-        # original_image = requests.get(input_image_url)
-        # if original_image.status_code != 200:
-        #     return {"error": "Failed to download image from URL"}
-
+       
         client = OpenAI(api_key=open_api_key)
   
         response = client.chat.completions.create(
@@ -71,12 +64,10 @@ def analyze_image(
                     ],
                     "analyze_result": response.choices[0].message.content,
                 },
-                # goto=Graph_Node.MANAGER.value
             )
         else:
             print("else")
             return Command(
-                # graph=Command.PARENT,
                 update={
                     "messages": [
                         ToolMessage(
@@ -85,7 +76,6 @@ def analyze_image(
                     ],
                     
                 },
-                # goto=Graph_Node.MANAGER.value,
             )
     
     except requests.exceptions.RequestException as e:

@@ -18,7 +18,7 @@ from src.config.config import cloundinary_config
 
 
 load_dotenv()
-# API_KEY = "sk-qhJ9B9UIHzzuZRGPbHESgPBrVBjErxXVlwPOZiiMHGqJ1oAr"
+
 
 
 
