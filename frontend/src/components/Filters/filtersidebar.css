@@ -1,0 +1,191 @@
+
+.filters-sidebar {
+    width: 280px;
+    height: 100vh;
+    background-color: #f8f9fa;
+    border-right: 1px solid #e9ecef;
+    padding: 20px 16px;
+    overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+  
+  .filters-sidebar h3 {
+    /* position: fixed; */
+    /* top: 0; */
+    font-size: 16px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin: 0 0 20px 0;
+    padding: 0;
+    /* z-index: 1000; */
+  }
+
+.filters-scroll-container {
+    /* padding: 0 16px 20px; */
+    /* overflow-y: auto; */
+    flex: 1;
+  }
+  
+  .filters-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    padding: 0;
+    margin: 0;
+    z-index: 50;
+  }
+  
+  .filter-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    padding: 8px 4px;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+  }
+  
+  .filter-item:hover {
+    background-color: #e9ecef;
+  }
+  
+  .filter-item.selected {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .filter-item.selected .filter-name {
+    color: white;
+  }
+  
+  .filter-thumbnail {
+    width: 60px;
+    height: 60px;
+    border-radius: 6px;
+    margin-bottom: 6px;
+    overflow: hidden;
+    position: relative;
+    background: linear-gradient(45deg, #ff6b35, #f7931e);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid transparent;
+    transition: border-color 0.2s ease;
+  }
+  
+  .filter-item.selected .filter-thumbnail {
+    border-color: white;
+  }
+  
+  .filter-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  /* Filter effects for thumbnails */
+  .filter-thumbnail.original img {
+    filter: none;
+  }
+  
+  .filter-thumbnail.sepia img {
+    filter: sepia(100%);
+  }
+  
+  .filter-thumbnail.grayscale img {
+    filter: grayscale(100%);
+  }
+  
+  .filter-thumbnail.brighten img {
+    filter: brightness(1.5);
+  }
+  
+  .filter-thumbnail.invert img {
+    filter: invert(100%);
+  }
+  
+  .filter-thumbnail.blur img {
+    filter: blur(2px);
+  }
+  
+  .filter-thumbnail.tropical img {
+    filter: saturate(1.5) hue-rotate(30deg);
+  }
+  
+  .filter-thumbnail.crisp img {
+    filter: contrast(1.3) brightness(1.1);
+  }
+  
+  .filter-thumbnail.sandy img {
+    filter: sepia(0.3) saturate(1.2) hue-rotate(15deg);
+  }
+  
+  .filter-thumbnail.moody img {
+    filter: contrast(1.2) brightness(0.8) saturate(0.8);
+  }
+  
+  .filter-thumbnail.black-white img {
+    filter: grayscale(100%) contrast(1.2);
+  }
+  
+  .filter-thumbnail.neon img {
+    filter: saturate(2) brightness(1.2) hue-rotate(270deg);
+  }
+  
+  .filter-thumbnail.washed img {
+    filter: brightness(1.2) saturate(0.7);
+  }
+  
+  .filter-thumbnail.bright img {
+    filter: brightness(1.4) contrast(1.1);
+  }
+  
+  .filter-thumbnail.mellow img {
+    filter: sepia(0.2) saturate(0.8) brightness(1.1);
+  }
+  
+  .filter-thumbnail.romantic img {
+    filter: sepia(0.4) saturate(1.3) hue-rotate(320deg);
+  }
+  
+  .filter-thumbnail.newspaper img {
+    filter: grayscale(100%) contrast(1.5) brightness(1.1);
+  }
+  
+  .filter-name {
+    font-size: 12px;
+    font-weight: 500;
+    color: #495057;
+    text-align: center;
+    line-height: 1.2;
+  }
+  
+  /* Placeholder for when no image is provided */
+  .filter-thumbnail-placeholder {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    font-size: 10px;
+    font-weight: 600;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Scrollbar styling */
+  .filters-sidebar::-webkit-scrollbar {
+    width: 4px;
+  }
+  
+  .filters-sidebar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .filters-sidebar::-webkit-scrollbar-thumb {
+    background: #ced4da;
+    border-radius: 2px;
+  }
+  
+  .filters-sidebar::-webkit-scrollbar-thumb:hover {
+    background: #adb5bd;
+  }

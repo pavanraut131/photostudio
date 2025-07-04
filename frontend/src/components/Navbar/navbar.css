@@ -1,0 +1,105 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 24px;
+  height: 65px;
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  color: #1e293b;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid #e2e8f0;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.navbar h3 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #0ea5e9, #3b82f6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.025em;
+  transition: all 0.3s ease;
+}
+
+.navbar h3:hover {
+  transform: scale(1.02);
+}
+
+.navbar-buttons {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.navbar-buttons button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #475569;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  min-height: 36px;
+}
+
+.navbar-buttons button:hover {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-buttons button:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-buttons button:focus {
+  outline: none;
+  ring: 2px solid #3b82f6;
+  ring-offset: 2px;
+}
+
+/* Icon-only buttons (undo/redo) */
+.navbar-buttons button:has(svg):not(:has(span)) {
+  padding: 8px;
+  min-width: 36px;
+}
+
+/* Revert button special styling */
+.navbar-buttons button:first-child {
+  background: linear-gradient(135deg, #f3f1f1, #f3f1f1);
+  color: rgb(8, 8, 8);
+  border: none;
+  font-weight: 600;
+}
+
+.navbar-buttons button:first-child:hover {
+  background: linear-gradient(135deg, #dbdada, #4e4d4d);
+  transform: translateY(-1px);
+}
+.navbar-buttons button:disabled {
+  
+  opacity: 0.5;
+  transform: none;
+  box-shadow: none ;
+  background: #e2e8f0; 
+  color: #94a3b8 ;
+  border-color: #cbd5e1;
+}
+

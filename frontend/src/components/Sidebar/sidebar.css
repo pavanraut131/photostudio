@@ -1,0 +1,48 @@
+/* Sidebar container */
+
+  /* Tool tab list container */
+  .tool-tab-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    padding: 0 4px;
+  }
+  
+  /* Individual tool tab */
+  .tool-tab {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 100%;
+    border-radius: 8px;
+    color: #c0c0c0;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+  
+  .tool-tab:hover {
+    background-color: lightblue;
+    color: #ffffff;
+  }
+  
+  /* Active tool tab (optional highlight) */
+  .tool-tab.active {
+    background-color: #007bff;
+    color: #ffffff;
+    border-left: 3px solid #007bff;
+  }
+  
+  /* SVG icons */
+  .tool-tab svg {
+    display: block;
+    width: 20px;
+    height: 20px;
+  }
+  
+  /* Push main content to the right */
+  /* .main-content {
+    margin-left: 56px;
+  } */
+  

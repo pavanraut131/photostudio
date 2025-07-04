@@ -1,0 +1,13 @@
+fastapi==0.115.12
+uvicorn==0.34.0
+python-dotenv==1.1.0
+uuid==1.30
+openai==1.72.0
+langgraph==0.3.31
+langchain-community==0.3.21
+langchain_openai
+requests
+pillow 
+vertexai
+cloudinaryconda 
+google-genai

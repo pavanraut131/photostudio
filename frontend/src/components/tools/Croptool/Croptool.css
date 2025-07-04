@@ -1,0 +1,313 @@
+/* CropTool.css */
+
+.crop-tool-container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background-color: #f5f5f5; /* Light gray background for the whole app */
+  color: #333333; /* Darker text for better contrast */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern font */
+}
+
+.main-content-area {
+  flex-grow: 1;
+  position: relative;
+  background-color: #f5f5f5; /* Match container background for seamless look */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  /* margin-left: 60px; REMOVE THIS - sidebar handles its own width */
+  padding: 20px; /* Add some padding around the main content */
+  box-sizing: border-box; /* Include padding in width/height */
+}
+
+.no-image-placeholder {
+  color: #a0a0a0;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.cropsidebar-container {
+  width: 250px; /* Slightly adjusted width */
+  background-color: #ffffff;
+  flex-shrink: 0;
+  padding: 20px 15px; /* Consistent padding */
+  border-right: 1px solid #e0e0e0; /* Lighter border */
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.05); /* Softer shadow */
+  display: flex;
+  flex-direction: column;
+  gap: 25px; /* Consistent spacing */
+  color: #333333; /* Dark text on white background */
+}
+
+.cropsidebar-inner-content {
+  display: flex;
+  flex-direction: column;
+  gap: 25px; /* More consistent gap */
+}
+
+.cropsidebar-inner-content h4 {
+  margin-top: 0; /* Remove default margin */
+  margin-bottom: 5px; /* Small margin below heading */
+  font-size: 0.9rem;
+  color: #777777; /* Slightly darker gray for headings */
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.cropsidebar-inner-content h3{
+  margin-top: 0;
+  text-align: center;
+  margin-bottom: 10px; /* More spacing below title */
+  font-size: 1rem;
+  color: #555555;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.cropsidebar-inner-content select {
+  width: 80%; /* Increased width for readability */
+  padding: 10px 12px;
+  border-radius: 5px; /* Slightly larger radius */
+  border: 1px solid #cccccc; /* Lighter border */
+  background-color: #fdfdfd; /* Very light background */
+  color: #333333;
+  margin: 0 auto 30px auto; /* Center horizontally, bottom margin */
+  display: block; /* Make it a block element to center */
+  font-size: 0.9rem;
+  cursor: pointer;
+  appearance: none;
+  background-image: url('data:image/svg+xml;utf8,<svg fill="%23888888" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>'); /* Darker arrow */
+  background-repeat: no-repeat;
+  background-position: right 10px center; /* Centered arrow */
+  background-size: 16px;
+}
+
+.cropsidebar-inner-content select:focus {
+  outline: none;
+  border-color: #007bff; /* Blue focus border */
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.cropsidebar-inner-content select option {
+  background-color: #ffffff; /* White background for options */
+  color: #333333; /* Dark text for options */
+}
+
+/* .crop-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff; 
+  border-radius: 8px; 
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); 
+  overflow: hidden; 
+} */
+
+.crop-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  /* overflow: hidden; */
+  padding: 1rem;
+}
+
+.crop-container {
+  position: relative;
+  max-width: 1000px;
+  max-height: 90vh;
+  background-color: #000000;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px;
+}
+
+.crop-container img {
+  width: 100%;
+  height: auto;
+  max-height: 90vh;
+  object-fit: contain;
+  display: block;
+}
+
+/* Optional: Add better visual for crop box */
+.ReactCrop__crop-selection {
+  border: 2px dashed #00bfff !important;
+  box-shadow: 0 0 0 10000px rgba(0, 0, 0, 0.6);
+  transition: border 0.2s ease-in-out;
+}
+
+
+.backdrop {
+  position: absolute;
+  top: 0; /* Cover the whole area */
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6); /* Darker, more effective overlay */
+  z-index: 1;
+}
+
+
+
+
+/* react-easy-crop's built-in container might need some default styling if overridden */
+.react-easy-crop-container {
+  /* Ensure no conflicting styles here that would hide the image */
+}
+
+.cropped-image-display {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%; /* Take full width of wrapper */
+  height: 100%; /* Take full height of wrapper */
+  background-color: #ffffff; /* Consistent background */
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.cropped-image {
+  max-width: 100%;
+  max-height: 100%; /* Corrected from 1000% */
+  object-fit: contain;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+.display-controls {
+  margin-top: 30px;
+  display: flex;
+  gap: 20px;
+}
+
+.re-crop-button {
+  padding: 12px 30px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.05rem;
+  font-weight: bold;
+  background-color: #007bff;
+  color: white;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.re-crop-button:hover {
+  background-color: #0056b3;
+}
+.re-crop-button:active {
+transform: translateY(1px);
+}
+
+.custom-size-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* More space */
+  padding-left: 0; /* Remove padding-left */
+}
+
+.custom-size-inputs {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px; /* More space between inputs */
+}
+
+.custom-size-inputs input[type="number"] {
+  width: 100%; /* Take full width of parent flex item */
+  padding: 8px 10px;
+  border-radius: 5px;
+  border: 1px solid #cccccc;
+  background-color: #fdfdfd;
+  color: #333333;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.custom-size-inputs input[type="number"]:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.crop-extend-toggle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 25px; /* More space */
+}
+
+.crop-button, .extend-button {
+  background-color: #e0e0e0; /* Lighter grey for default state */
+  color: #333333; /* Dark text */
+  padding: 8px 25px; /* Larger padding */
+  border: 1px solid #ccc; /* Softer border */
+  margin-top: 20px;
+  border-radius: 5px;
+  font-size: 0.95rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.crop-button:hover, .extend-button:hover {
+  background-color: #d0d0d0; /* Slightly darker grey on hover */
+  transform: translateY(-1px);
+}
+
+.action-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* More space */
+  margin-top: 30px;
+}
+
+.action-buttons button {
+  padding: 10px 15px; /* Larger padding */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: bold;
+  transition: background-color 0.2s ease, opacity 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+.action-buttons button:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+.action-buttons button:disabled {
+  background-color: #cccccc !important; /* Force disabled color */
+  color: #999999 !important;
+  cursor: not-allowed;
+  opacity: 1; /* Don't fade disabled buttons too much */
+}
+
+.action-buttons button:first-of-type { /* Crop Image button */
+  background-color: #007bff;
+  color: white;
+}
+
+.action-buttons button:last-of-type { /* Upscale Image button */
+  background-color: #6c757d; /* A muted gray */
+  color: #ffffff;
+}

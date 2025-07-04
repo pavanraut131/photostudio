@@ -1,0 +1,87 @@
+
+  
+  .panel-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #111827;
+    margin-bottom: 4px;
+  }
+  
+  .input-label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #374151;
+    margin-top: 12px;
+  }
+  
+  .prompt-input {
+    width: 100%;
+    height: 200px;
+    padding: 10px;
+    font-size: 14px;
+    color: #111827;
+    background-color: #f9fafb;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    resize: none;
+    box-sizing: border-box;
+  }
+  
+  .style-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  
+  .style-btn {
+    flex: 1 1 30%;
+    font-size: 13px;
+    padding: 6px 8px;
+    background-color: #ffffff;
+    color: #374151;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.2s ease;
+  }
+  
+  .style-btn.active {
+    background-color: #2563eb;
+    color: #ffffff;
+    border-color: #2563eb;
+  }
+  
+  .style-btn:hover {
+    background-color: #f3f4f6;
+  }
+  
+  .action-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 16px;
+  }
+  
+  .generate-btn {
+    padding: 10px 0;
+    background: linear-gradient(to right, #06b6d4, #3b82f6);
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 14px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  .use-image-btn {
+    padding: 10px 0;
+    background-color: #f3f4f6;
+    color: #6b7280;
+    font-weight: 500;
+    font-size: 14px;
+    border: none;
+    border-radius: 8px;
+    cursor: not-allowed;
+  }
+  

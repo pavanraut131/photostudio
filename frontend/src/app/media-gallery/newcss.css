@@ -1,0 +1,113 @@
+.page-container {
+  display: flex;
+  flex-direction: row;
+  min-height: 100vh;
+  background-color: #f8f9fa;
+  padding-top: 60px;
+}
+
+.sidebaroriginal {
+  width: 50px;
+  min-width: 50px;
+  background-color: white;
+  height: 100vh;
+  top: 0;
+  align-self: flex-start;
+  left: 0;
+  padding-top: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  min-width: 0;
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.main-sidebar {
+  width: 280px;
+  padding: 24px;
+  background-color: #fffdfd;
+  border-right: 1px solid #e5e7eb;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  gap: 25px;
+  box-sizing: border-box;
+}
+
+.spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left-color: black;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.analyzebutton {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.analyzebutton:hover {
+  background-color: #0056d2;
+}
+
+p {
+  font-size: 1rem;
+  color: #444;
+  margin-bottom: 20px;
+  line-height: 1.4;
+}
+
+.thumnail-removebackground {
+  position: relative;
+  width: 100%;
+  height: 128px;
+  background-color: #f3f4f6;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 2px solid #e5e7eb;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.image-backgroundremove {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.erase-button{
+  margin-top: 20px;
+    padding: 7px 35px;
+    font-size: 16px;
+    background-color: #4285f4;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+.erase-button:hover {
+  background-color: #0865fa;
+}
