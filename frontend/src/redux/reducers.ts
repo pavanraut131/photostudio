@@ -46,19 +46,13 @@ export const reducers = {
   },
   setresult_url: (state: ImageState, action: PayloadAction<string>) => {
     state.result_image_url = action.payload;
-    // state.imageforadjust = action.payload
   },
   setadjustimage: (state: ImageState, action: PayloadAction<string>) => {
-    // state.result_image_url = action.payload;
     state.imageforadjust = action.payload
   },
   setorginalimage: (state: ImageState, action: PayloadAction<string>) => {
-    // state.result_image_url = action.payload;
     state.orginal_image = action.payload
   },
-  // setOriginalImageUrl: (state: ImageState, action: PayloadAction<string>) => {
-  //   state.original_image_url = action.payload;
-  // },
   setSelectedfilter: (state: ImageState, action: PayloadAction<string>) => {
     saveToHistory(state);
     state.selectedFilter = action.payload;
